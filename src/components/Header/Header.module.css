@@ -1,0 +1,7 @@
+.header {
+  grid-area: header;
+  background-color: brown;
+  padding: 5px 10px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 36px;
+}
