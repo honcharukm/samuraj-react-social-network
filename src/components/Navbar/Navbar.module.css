@@ -18,3 +18,8 @@
 .container nav a.active {
     color: chartreuse;
 }
+
+.friends_bar {
+    margin-top: 30px;
+
+}

@@ -1,0 +1,40 @@
+.dialogs_wrap {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+}
+
+.dialogs {
+    border-right: #731d1d 1px solid;
+    padding-right: 10px;
+}
+.dialogs h3 {
+    color: chartreuse;
+    margin-bottom: 15px;
+}
+.dialogs_item {
+    display: block;
+    padding: 10px;
+    border: chartreuse 1px solid;
+    margin-bottom: 10px;
+}
+.dialogs_item.active_item, .dialogs_item:hover {
+    border-color: #731d1d;
+}
+
+.dialog{
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.dialog_message {
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 30px;
+    border: antiquewhite 1px solid;
+    margin-bottom: 10px;
+}
+.dialogs_item_you {
+    align-self: flex-end;
+}

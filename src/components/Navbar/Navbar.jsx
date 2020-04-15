@@ -7,6 +7,9 @@ const Navbar = () => {
         <aside className={style.container}>
             <nav>
                 <div className={style.item}>
+                    <NavLink to="/users" activeClassName={style.active}>Users</NavLink>
+                </div>
+                <div className={style.item}>
                     <NavLink to="/profile" activeClassName={style.active}>Profile</NavLink>
                 </div>
                 <div className={style.item}>
@@ -22,6 +25,9 @@ const Navbar = () => {
                     <NavLink to="/settings" activeClassName={style.active}>Settings</NavLink>
                 </div>
             </nav>
+            <div className={style.friends_bar}>
+                {/*<FriendsBar store={props.store}/>*/}
+            </div>
         </aside>
     )
 }

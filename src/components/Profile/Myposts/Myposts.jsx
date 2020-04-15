@@ -1,16 +1,30 @@
 import React from "react";
 import Post from "./Post/Post";
 
-const Myposts = () => {
+const Myposts = (props) => {
+
+    const postsItem = props.state.posts
+        .map(post => <Post key={post.id} state={post}/>);
+
+    const postTextArea = React.createRef();
+
+    const addPost = () => {
+        props.onAddPost();
+    };
+    const onChangeTextArea = () => {
+        props.onChangeText(postTextArea.current.value);
+    };
+
     return (
         <div>
             My posts
             <div>
-                <textarea name="message" id="" cols="30" rows="10"></textarea>
-                <button>send</button>
+                <textarea ref={postTextArea}
+                          value={props.state.currentPostText}
+                          onChange={onChangeTextArea}/>
+                <button onClick={addPost}>send</button>
             </div>
-            <Post message={'Hello'} />
-            <Post message={'It\'s my first post'}/>
+            {postsItem}
         </div>
     );
 }
