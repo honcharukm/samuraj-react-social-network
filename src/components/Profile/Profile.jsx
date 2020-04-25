@@ -2,10 +2,10 @@ import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MypostsContainer from "./Myposts/MypostsContainer";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <React.Fragment>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile} />
             <MypostsContainer />
         </React.Fragment>
     )

@@ -3,5 +3,19 @@
   background-color: brown;
   padding: 5px 10px;
   font-family: 'Pathway Gothic One', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h6 {
   font-size: 36px;
+  transition: all .3s;
+  cursor: pointer !important;
+}
+.header h6:hover {
+  transition: all .3s;
+  color: white;
+}
+.header a {
+  color: white;
 }

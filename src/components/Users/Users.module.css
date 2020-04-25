@@ -13,3 +13,15 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.pagginationItem {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.activePagginationItem {
+    font-weight: bold;
+    color: white;
+    background: chocolate;
+}
