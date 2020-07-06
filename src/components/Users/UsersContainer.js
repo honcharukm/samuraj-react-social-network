@@ -2,35 +2,17 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    changeCurrentPage,
-    followed,
-    setTotalUsersCount,
-    setUsers, toggleIsFetching,
-    unFollowed
+    follow, getUsers, unfollow
 } from "../../Redux/users-reducer";
-import * as axios from "axios";
 import Loading from "../common/Loading/Loading";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count${this.props.pageSize}&page=${this.props.currentPage}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onChangeUsers = (pageNumber) => {
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count${this.props.pageSize}&page=${pageNumber}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-            });
-
-        this.props.changeCurrentPage(pageNumber);
+        this.props.getUsers(pageNumber, this.props.pageSize)
     };
 
     render() {
@@ -41,8 +23,9 @@ class UsersContainer extends React.Component {
                    currentPage={this.props.currentPage}
                    onChangeUsers={this.onChangeUsers}
                    users={this.props.users}
-                   unFollowed={this.props.unFollowed}
-                   followed={this.props.followed}
+                   disableButton={this.props.disableButton}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
             />
         </>
     }
@@ -54,16 +37,14 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        disableButton: state.usersPage.disableButton
     }
 };
 
 
 export default connect(mapStateToProps, {
-    setUsers,
-    followed,
-    unFollowed,
-    setTotalUsersCount,
-    changeCurrentPage,
-    toggleIsFetching
+    getUsers,
+    follow,
+    unfollow
 })(UsersContainer)
